@@ -18,17 +18,19 @@ Route::get('/', function () {
 });
 
 Route::get('notas', function (){
-    $notas = [
-       /* 'Primera nota',
-        'Segunda nota',
-        'Tercera nota',
-        'Cuarta nota',
-        'Quinta nota',*/
-    ];
+    $notas = DB::table('notas')->get();
 
     return view('notas', ['notas' => $notas]);
-});
+})->name('notas.index');
 
 Route::get('agregar', function (){
     return view('agregar');
 });
+
+Route::get('notas/{id}/editar', function ($id){
+    $nota = DB::table('notas')
+    ->where('id', $id)
+    ->first();
+
+    return 'Aqui se van a editar las notas' .$id;
+})->name('notas.edit');
