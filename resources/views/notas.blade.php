@@ -19,9 +19,13 @@
                         <a href="{{ route('notas.edit', ['id' => $nota-> id]) }}" class="action-link action-edit">
                             <i class="icon icon-pen"></i>
                         </a>
+                        <form method="POST" action="{{ url("notas/{$nota->id}") }}">
+                        @csrf
+                        @method('DELETE')
                         <a class="action-link action-delete">
-                            <i class="icon icon-trash"></i>
+                        <button class="action-link"><i class="icon icon-trash"></i></button>
                         </a>
+                    </form>
                     </footer>
                 </div>
             @empty
